@@ -15,30 +15,62 @@ class Empleado:
         self.ciudad = ciudad
 
     def paga_impuestos(self):
-        if self.sueldo>3000:
-            print("Debe de pagar impuestos")
-        else:
-            print("No paga impuestos")  
+       return self.salario > 3000
 
     def ticket(self):
-        ticket = "Ticket de Empleado\n"
-        ticket += "---------------------\n" 
-        ticket += f"nombre:{self.nombre}\n" 
-        ticket += f"departamento:{self.departamento.nombre}\n"  
-        ticket += f"puesto:{self.puesto}\n"
-        ticket += f"Fecha de ingreso:{self.fecha_ingreso}\n" 
-        ticket += f"salario: ${self.salario}\n"  
-        ticket += f"paga impuestos?:{'Sí' if self.paga_impuestos() else'No'}\n"  
-        ticket += f"---Datos Extra del Empleado----\n"
-        ticket += f"Direccion:{self.direccion}\n"
-        ticket += f"Telefono:{self.telefono}\n"
-        ticket += f"Hobbies:{self.hobbies}\n"
-        ticket += f"Ciudad:{self.ciudad}\n"
-        ticket += f"-------------- \n"
-        return ticket
+        print("Ticket de Empleado\n")
+        print("---------------------\n")
+        print(f"nombre:{self.nombre}\n")
+        print(f"departamento:{self.departamento.nombre}\n")
+        print(f"puesto:{self.puesto}\n")
+        print(f"Fecha de ingreso:{self.fecha_ingreso}\n")
+        print(f"salario: ${self.salario}\n" )
+        print(f"Paga impuestos?: {'Sí' if self.paga_impuestos() else 'No'}\n")
+        print(f"---Datos Extra del Empleado----\n")
+        print(f"Direccion:{self.direccion}\n")
+        print(f"Telefono:{self.telefono}\n")
+        print (f"Hobbies:{self.hobbies}\n")
+        print(f"Ciudad:{self.ciudad}\n")
+        print(f"-------------- \n")
     
 if __name__ == "__main__":
     empleados = []  
 #menu
     while True:
-        print()  
+        print("Menu de Empleados")
+        print("1.Agregar Empleados")
+        print("2.Ver ticket de Empleados")
+        print("3.Salir")
+        opcion = input ("Elige un Numero:  ") 
+
+        if opcion == "1":
+            dept_nombre = input("Ingresa el Nombre del Departamento: ")
+            departamento = departamento(dept_nombre)
+
+            nombre = input("Nombre del Empleado: ")
+            salario = float(input("Salario: "))
+            fecha_ingreso = input("Fecha de Ingreso: ")
+            direccion = input("Direccion: ")
+            telefono = input("Telefono: ")
+            puesto = input("Puesto: ")
+            hobbies = input("Hobbies: ")
+            ciudad = input("Ciudad: ")
+
+            empleado = Empleado(nombre,salario,fecha_ingreso,departamento,direccion,telefono,puesto,hobbies,ciudad)
+            empleados.append(empleado)
+
+        elif opcion == "2":
+            if not empleados:
+                print("No hay Empleados en la Lista")
+            else:
+                for empleado in empleados:
+                    empleado.ticket()
+                    
+        elif opcion == "3":
+            print("Saliendo del Programa...")
+            break
+        else:
+            print("Opcion no Encontrada..")
+
+
+
