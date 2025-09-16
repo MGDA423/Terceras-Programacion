@@ -40,7 +40,8 @@ if __name__ == "__main__":
         print("Menu de Empleados")
         print("1.Agregar Empleados")
         print("2.Ver ticket de Empleados")
-        print("3.Salir")
+        print("3.Eliminar Empleado")
+        print("4.salir")
         opcion = input ("Elige un Numero:  ") 
 
         if opcion == "1":
@@ -65,8 +66,24 @@ if __name__ == "__main__":
             else:
                 for empleado in empleados:
                     empleado.ticket()
-                    
+
         elif opcion == "3":
+            if not empleados:
+                print("No hay empleados para eliminar..")
+            else:
+                nombre_eliminar = input("Ingresa el nombre del Empleado:  ")
+
+                encontrado = False
+                for empleado in empleados:
+                    if empleado.nombre == nombre_eliminar:
+                        empleados.remove(empleado)
+                        print(f"Empleado {nombre_eliminar} eliminado correctamente.")
+                        encontrado = True
+                        break
+                if not encontrado:
+                    print("Empleado no encontrado")    
+
+        elif opcion == "4":
             print("Saliendo del Programa...")
             break
         else:
