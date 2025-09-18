@@ -14,7 +14,7 @@ class Alumno:
         print(f"Calificaciones:{self.Calificaciones}")
         print(f"promedio{self.promedio():.2f}")
 
-if __name__ == "main":
+if __name__ == "__main__":
     Alumnos = []
 
     while True:
@@ -33,15 +33,15 @@ if __name__ == "main":
 
             print("Ingresa 5 Calificaciones: ")
             for i in range(5):
-                calificaciones = float(input(f"Calificacion {i+1}:"))
-                calificaciones.append(calificaciones) 
+                cal = float(input(f"Calificacion {i+1}:"))
+                calificaciones.append(cal) 
 
                 alumno = Alumno(Nombre,Materia,calificaciones)
                 Alumnos.append(alumno)
                 print("Alumno Agregado")
 
         elif opcion == "2":
-            if not alumnos:
+            if not Alumnos:
                 print("No hay Alumnos registrados")
             else:
                 for alumno in Alumnos:
@@ -59,10 +59,27 @@ if __name__ == "main":
                             print(f"Alumno {Nombre_eliminar} eliminado correctamente.")
                             encontrado = True
                             break
-                    if not encontrado:
+                if not encontrado:
                         print("Alumno no encontrado")
 
         elif opcion == "4":
+            if not Alumnos: 
+                print("No hay Alumnos en la Lista")
+            else:
+                Nombre_buscar = input("Ingresa el Nombre del Alumno a buscar: ")
+                encontrado = False
+                for alumno in Alumnos:
+                    if alumno.Nombre == Nombre_buscar:
+                        alumno.mostrar_info()
+                        encontrado = True
+                        break
+                if not encontrado:
+                    print("Alumno no encontrado")
 
+        elif opcion == "5":
+            print("saliedo del programa")
+            break
+        else:
+            print("Opcion no valida")                
 
-
+                        
