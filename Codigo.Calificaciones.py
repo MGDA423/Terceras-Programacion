@@ -36,9 +36,9 @@ if __name__ == "__main__":
                 cal = float(input(f"Calificacion {i+1}:"))
                 calificaciones.append(cal) 
 
-                alumno = Alumno(Nombre,Materia,calificaciones)
-                Alumnos.append(alumno)
-                print("Alumno Agregado")
+            alumno = Alumno(Nombre,Materia,calificaciones)
+            Alumnos.append(alumno)
+            print("Calificacion Agregada")
 
         elif opcion == "2":
             if not Alumnos:
